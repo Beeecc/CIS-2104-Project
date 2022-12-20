@@ -31,7 +31,7 @@
             </div>
         </nav>
         <!-- Table Showcase -->
-        <section class="p-5 text-center text-sm-start">
+        <section class="bg-white p-5 text-center text-sm-start">
             <div class="container">
                 <h1>Complaints Log</h1>
                 <div class="align-items-center justify-content-between">
