@@ -93,3 +93,32 @@
     margin-left: -15rem;
   }
 }
+
+/*****************************tenant_account.php******************************/
+
+.tenant_account_body {
+  height: 100vh;
+  margin: 0;
+}
+
+#payment_history_box {
+  float: left;
+  height: 100%;
+  width: 50%;
+  background-color: purple;
+}
+
+#complaint_box {
+  float: left;
+  height: 100%;
+  width: 50%;
+  background-color: yellow;
+}
+
+h2 {
+  text-align: center;
+}
+
+tr {
+  color: white;
+}

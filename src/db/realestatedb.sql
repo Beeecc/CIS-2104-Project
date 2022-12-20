@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2022 at 09:03 AM
+-- Generation Time: Dec 18, 2022 at 07:17 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -46,6 +46,7 @@ CREATE TABLE `admin_t` (
 CREATE TABLE `apartment_t` (
   `apartment_no` int(11) NOT NULL,
   `rental_fee` decimal(10,2) NOT NULL,
+  `availablility` enum('vacant','occupied') NOT NULL,
   `manager_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
