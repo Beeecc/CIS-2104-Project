@@ -32,5 +32,14 @@
             $status = 200;
         }
     }
+    $myObj = array(
+        'status' => $status,
+        'data' => $data,
+        'count' => $count
+    );
+
+    $myJSON = json_encode($myObj, JSON_FORCE_OBJECT);
+    echo $myJSON;
+    $con->close();
 
 ?>
