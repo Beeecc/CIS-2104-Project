@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +20,7 @@
     <title>Document</title>
 </head>
 
-<body class="tenant_account_body">
+<body class="tenant_account_body" onload="ready()">
 
     <div class="dropdown position-absolute top-0 end-0 m-1">
         <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
@@ -36,21 +39,11 @@
                     <th>Date</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="payments">
                 <tr>
                     <td>5500</td>
                     <td>online payment</td>
                     <td>12/05/2022</td>
-                </tr>
-                <tr>
-                    <td>2000</td>
-                    <td>cash</td>
-                    <td>07/02/2022</td>
-                </tr>
-                <tr>
-                    <td>4000</td>
-                    <td>check</td>
-                    <td>05/01/2022</td>
                 </tr>
             </tbody>
         </table>
@@ -77,6 +70,51 @@
             </div>
         </div>
     </div>
+
+
+    <script type="text/javascript">
+        var userID = <?php echo $_SESSION["user_id"]; ?>;
+        var xhttp = new XMLHttpRequest();
+
+        function showPayments(amount, MOP, date) {
+            $("#payments").append('\
+                <tr>\
+                    <td>'+ amount +'</td>\
+                    <td>'+ MOP +'</td>\
+                    <td>'+ date +'</td>\
+                </tr>\
+            ');
+        }
+
+        function ready() {
+            getPayments(true);
+        }
+
+        function getPayments(isActive = tabClicked === 0) {
+            removeAllCards();
+            var url = "../src/php/getPayments_action.php";
+            var urlData = url + "?user_id=" + userID;
+            xhttp.open("GET", urlData, true);
+            xhttp.send();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var res = JSON.parse(this.responseText);
+                    if (res["status"] == 200) {
+                        for (var i = 0; i < res["count"]; i++) {
+                            addCard(res["data"][i]["item_id"], res["data"][i]["item_name"], res["data"][i]["item_description"]);
+                        }
+                    }
+                }
+            };
+        }
+
+        function removeAllCards() {
+            $("#activeCards").empty();
+            console.log("Test");
+        }
+    </script>
+
+
 </body>
 
 </html>
