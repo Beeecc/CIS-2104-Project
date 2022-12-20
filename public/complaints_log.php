@@ -14,7 +14,7 @@
     <body>
         <nav class="navbar navbar-expand- bg-dark navbar-dark py-3">
             <div class="container">
-                <a href="#" class="navbar-brand">NAC Management</a>
+                <a href="index.php" class="navbar-brand">NAC Management</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
