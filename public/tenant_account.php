@@ -17,6 +17,14 @@
 </head>
 
 <body class="tenant_account_body">
+
+    <div class="dropdown position-absolute top-0 end-0 m-1">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="#">Logout</a></li>
+        </ul>
+    </div>
+
     <div id="payment_history_box">
         <h2>Payment History</h2>
         <table class="table table-dark table-striped">
@@ -49,7 +57,7 @@
 
     <div id="complaint_box">
         <h2>Complaints</h2>
-        <div class="input-group">
+        <div class="input-group mb-3">
             <input type="text" class="form-control" aria-label="Username" aria-describedby="input-group-button-right">
             <button type="button" class="btn btn-success" id="input-group-button-right">Add</button>
         </div>
