@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../src/css/styles.css" />
 
@@ -19,7 +20,7 @@
 <body class="tenant_account_body">
 
     <div class="dropdown position-absolute top-0 end-0 m-1">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
+        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li><a class="dropdown-item" href="#">Logout</a></li>
         </ul>
@@ -58,18 +59,18 @@
     <div id="complaint_box">
         <h2>Complaints</h2>
         <div class="input-group mb-3">
-            <input type="text" class="form-control" aria-label="Username" aria-describedby="input-group-button-right">
+            <input type="text" class="form-control bg-secondary" aria-label="Username" aria-describedby="input-group-button-right">
             <button type="button" class="btn btn-success" id="input-group-button-right">Add</button>
         </div>
 
-        <div class="card bg-secondary">
-            <div class="card-body ">
+        <div class="card bg-dark">
+            <div class="card-body">
                 <p class="card-text text-light">I need a plumber ASAP xoxo</p>
                 <button type="button" class="btn btn-danger float-end">Delete</button>
             </div>
         </div>
 
-        <div class="card bg-secondary">
+        <div class="card bg-dark">
             <div class="card-body">
                 <p class="card-text text-light">Ceiling gone from odette</p>
                 <button type="button" class="btn btn-danger float-end">Delete</button>
