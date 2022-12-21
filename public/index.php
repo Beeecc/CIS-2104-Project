@@ -10,7 +10,7 @@ include "../src/php/db_connect.php"
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-        <title>Todo List</title>
+        <title>Sign In | NAC Management</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -40,7 +40,7 @@ include "../src/php/db_connect.php"
                     $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
                     $result = mysqli_query($con, $query);
 
-                    if (mysqli_num_rows($result > 0)) {
+                    if (mysqli_num_rows($result ) > 0) {
                       // Start a session and set a session variable to indicate that the user is logged in
                       session_start();
                       $_SESSION['logged_in'] = true;

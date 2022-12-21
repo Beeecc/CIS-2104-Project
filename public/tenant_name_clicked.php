@@ -36,7 +36,7 @@ while($row=mysqli_fetch_assoc($result))
         <link rel="stylesheet" href="../src/css/styles.css" />
         <!-- JavaScript -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <title>Document</title>
+        <title>Tenant Profile | NAC Management</title>
     </head>
     <body class="tenant_name_clicked_body">
         <div id="tenantInfo_box">
