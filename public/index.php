@@ -129,7 +129,7 @@
 
                                     <tbody>
                                     <tr>
-                                    <td><a href = "tenant_name_clicked.php?GetID=<?php echo $row['tenant_id'] ?>"<?php echo $row['tenant_id']?></a></td>
+                                    <td><a href = "tenant_name_clicked.php?GetID=<?php echo $row['tenant_id'] ?>"><?php echo $row['tenant_id']?></a></td>
                                     <td><?php echo $row['fname']?></td>
                                     <td><?php echo $row['lname']?></td>
                                     <td><?php echo $row['amount']?></td>
