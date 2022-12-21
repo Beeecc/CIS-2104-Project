@@ -1,7 +1,6 @@
 <?php
 // Connect to the database
 include "../src/php/db_connect.php"
-// Check if the form has been submitted
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +40,7 @@ include "../src/php/db_connect.php"
                     $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
                     $result = $con->query($query);
 
-                    if ($result->num_rows > 0) {
+                    if (mysqli_num_rows($result > 0)) {
                       // Start a session and set a session variable to indicate that the user is logged in
                       session_start();
                       $_SESSION['logged_in'] = true;
