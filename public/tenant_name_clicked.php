@@ -138,8 +138,8 @@ while($row=mysqli_fetch_assoc($result))
                 $complaint = "SELECT c.complaint FROM tenant_t t, complaint_t c WHERE t.tenant_id = c.tenant_id && t.tenant_id='".$ID."';";
                 $complaintResult = mysqli_query($con, $complaint);
                 if(mysqli_num_rows($complaintResult) > 0) {
-                    while($paymentrow = mysqli_fetch_assoc($complaintResult)) {
-                        $listComplaint = $complaintResult['complaint'];
+                    while($complaintRow = mysqli_fetch_assoc($complaintResult)) {
+                        $listComplaint = $complaintRow['complaint'];
             ?>
             <?php echo "<div class='card bg-dark'>";
                 echo"<div class='card-body '>";
