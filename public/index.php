@@ -3,7 +3,7 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$dbname = "realestatedb";
+$dbname = "realestatedb.sql";
 $conn = mysqli_connect($host, $user, $password, $dbname);
 
 // Check connection
@@ -12,8 +12,8 @@ if (!$conn) {
 }
 
 // Get the login form data
-$username = $_POST["username"];
-$password = $_POST["password"];
+$username = $_POST['username'];
+$password = $_POST['password'];
 
 // Check if the username and password are correct
 $sql = "SELECT * FROM user_t WHERE username='$username' AND password='$password'";
