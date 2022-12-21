@@ -139,11 +139,10 @@ while($row=mysqli_fetch_assoc($result))
                 $complaintResult = mysqli_query($con, $complaint);
                 if(mysqli_num_rows($complaintResult) > 0) {
                     while($complaintRow = mysqli_fetch_assoc($complaintResult)) {
-                        $listComplaint = $complaintRow['complaint'];
             ?>
             <?php echo "<div class='card bg-dark'>";
                 echo"<div class='card-body '>";
-                    echo "$listComplaint";
+                    echo $complaintRow['complaint'];
                 echo "</div>";
                echo "</div>";
             ?>
