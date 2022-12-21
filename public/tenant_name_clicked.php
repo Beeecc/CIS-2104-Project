@@ -12,7 +12,6 @@ $contact = $row['contact_no'];
 $address = $row['address'];
 $apartment = $row['apartment_no'];
 $end = $row['contract_end'];
-$start = $row['contract_start'];
 while($row=mysqli_fetch_assoc($result))
 {
 }
