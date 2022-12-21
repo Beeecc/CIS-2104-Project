@@ -98,30 +98,7 @@ while($row=mysqli_fetch_assoc($result))
             <!-- Complaint Box -->
         </div>
             <h1>Complaints</h1>
-            <!--
-                  <div class="card bg-dark"><div class="card-body "><p class="card-text text-light">I need a plumber ASAP xoxo</p><button type="button" class="btn btn-success float-end">Solved</button></div></div> --> 
-                <?php/*
-                $complaint = "SELECT c.complaint FROM tenant_t t, complaint_t c WHERE t.tenant_id = c.tenant_id && t.tenant_id='".$ID."';";
-                $complaintResult = mysqli_query($con, $complaint);
-                if(mysqli_num_rows($complaintResult) > 0) {
-                    while($complaintRow = mysqli_fetch_assoc($complaintResult)) {
-                ?> <?php echo "
-							<div class='card bg-dark'>";
-                echo"
-								<div class='card-body '>";
-                    echo $complaintRow['complaint'];
-                echo "</div>";
-               echo "</div>";
-                ?>
-            <?php
-            } else {
-                echo "0 results";
-            }
-            mysqli_close($con);
-        */?> 
-
-
-        <div id="payment_box">
+            <div id="payment_box">
             <h1>Complaints</h1>
             <table class="table table-dark table-striped">
                 <thead>
