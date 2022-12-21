@@ -1,3 +1,31 @@
+<?php
+// Connect to the database
+include("db_connect.php");
+// Check if the form has been submitted
+if (isset($_POST['username']) && isset($_POST['password'])) {
+  // Escape the submitted username and password to prevent SQL injection attacks
+  $username = $con->real_escape_string($_POST['username']);
+  $password = $con->real_escape_string($_POST['password']);
+
+  // Query the database to see if the username and password are correct
+  $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+  $result = $con->query($query);
+
+  if ($result->num_rows > 0) {
+    // Start a session and set a session variable to indicate that the user is logged in
+    session_start();
+    $_SESSION['logged_in'] = true;
+
+    // Redirect the user to the home page
+    header('Location: dashboard.php');
+    exit;
+  } else {
+    // Display an error message
+    echo 'Invalid username or password';
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -29,31 +57,3 @@
         </div>
     </body>
 </html>
-
-<?php
-// Connect to the database
-include_once("db_connect.php");
-// Check if the form has been submitted
-if (isset($_POST['username']) && isset($_POST['password'])) {
-  // Escape the submitted username and password to prevent SQL injection attacks
-  $username = $con->real_escape_string($_POST['username']);
-  $password = $con->real_escape_string($_POST['password']);
-
-  // Query the database to see if the username and password are correct
-  $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-  $result = $con->query($query);
-
-  if ($result->num_rows > 0) {
-    // Start a session and set a session variable to indicate that the user is logged in
-    session_start();
-    $_SESSION['logged_in'] = true;
-
-    // Redirect the user to the home page
-    header('Location: dashboard.php');
-    exit;
-  } else {
-    // Display an error message
-    echo 'Invalid username or password';
-  }
-}
-?>
