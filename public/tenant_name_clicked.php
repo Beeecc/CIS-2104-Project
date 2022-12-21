@@ -133,8 +133,8 @@ while($row=mysqli_fetch_assoc($result))
                     <button type="button" class="btn btn-success float-end">Solved</button>
                 </div>
             </div> -->
-
-            <?php
+            <!--
+            <?php/*
                 $complaint = "SELECT c.complaint FROM tenant_t t, complaint_t c WHERE t.tenant_id = c.tenant_id && t.tenant_id='".$ID."';";
                 $complaintResult = mysqli_query($con, $complaint);
                 if(mysqli_num_rows($complaintResult) > 0) {
@@ -145,15 +145,51 @@ while($row=mysqli_fetch_assoc($result))
                     echo $complaintRow['complaint'];
                 echo "</div>";
                echo "</div>";
-            ?>
+            */?>
         </div>
-        <?php
+        <?php/*
                 }
             } else {
                 echo "0 results";
             }
             mysqli_close($con);
+        */?> -->
+
+        <div id="complaintLog_box">
+            <h1>Complaints</h1>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>Complaint</th>
+                    </tr>
+                </thead>
+                <?php
+                    $complaint = "SELECT c.complaint FROM tenant_t t, complaint_t c WHERE t.tenant_id = c.tenant_id && t.tenant_id='".$ID."';";
+                    $complaintResult = mysqli_query($con, $complaint);
+                    if(mysqli_num_rows($complaintResult) > 0) {
+                        while($complaintRow = mysqli_fetch_assoc($complaintResult)) {
+                ?>
+                <tbody>
+                <!--
+                    <tr>
+                        <td>5500</td>
+                        <td>online payment</td>
+                        <td>12/05/2022</td>
+                        <td>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>-->
+                <tr>
+                    <td><?php echo $paymentrow['complaint'] ?></td>
+                </tr>
+                </tbody>
+                <?php
+                }
+            } else {
+                echo "0 results";
+            }
         ?>
+        </table>
         </div>
     </body>
 </html>
