@@ -99,7 +99,6 @@ while($row=mysqli_fetch_assoc($result))
         </div>
             <h1>Complaints</h1>
             <div id="payment_box">
-            <h1>Complaints</h1>
             <table class="table table-dark table-striped">
                 <thead>
                     <tr>
@@ -114,7 +113,7 @@ while($row=mysqli_fetch_assoc($result))
                 ?>
                 <tbody>
                 <!--
-                    <tr>
+                    <tr>v
                         <td>5500</td>
                         <td>online payment</td>
                         <td>12/05/2022</td>
