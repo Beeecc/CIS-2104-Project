@@ -97,8 +97,8 @@ while($row=mysqli_fetch_assoc($result))
         </table>
             <!-- Complaint Box -->
         </div>
-            <h1>Complaints</h1>
             <div id="payment_box">
+            <h1>Complaints</h1>
             <table class="table table-dark table-striped">
                 <thead>
                     <tr>
