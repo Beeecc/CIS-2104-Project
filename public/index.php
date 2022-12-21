@@ -40,9 +40,7 @@ include "../src/php/db_connect.php"
                     $result = mysqli_query($con, $query);
                     if (mysqli_num_rows($result ) > 0) {
                         // Start a session and set a session variable to indicate that the user is logged in
-                        session_start();
-                        $_SESSION['logged_in'] = true;
-  
+                        
                         $temp = $con->query($query);
                         $result = $temp->fetch_assoc();
 
