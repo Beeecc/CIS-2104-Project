@@ -94,7 +94,7 @@ while($row=mysqli_fetch_assoc($result))
                 echo "0 results";
             }
         ?>
-            </table>
+        </table>
             <!-- Complaint Box -->
         </div>
             <h1>Complaints</h1>
@@ -114,7 +114,6 @@ while($row=mysqli_fetch_assoc($result))
                echo "</div>";
                 ?>
             <?php
-                }
             } else {
                 echo "0 results";
             }
