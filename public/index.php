@@ -32,7 +32,7 @@
 
 <?php
 // Connect to the database
-$con = new mysqli_connect('localhost', 'root', '', 'realestatedb');
+$con = mysqli_connect('localhost', 'root', '', 'realestatedb');
 // Check if the form has been submitted
 if (isset($_POST['username']) && isset($_POST['password'])) {
   // Escape the submitted username and password to prevent SQL injection attacks
