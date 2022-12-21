@@ -1,7 +1,3 @@
-<?php
-    //1. Session code here
-    session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,27 +9,52 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="../src/css/main.css" />
+        <link rel="stylesheet" href="../src/css/signIn.css" />
         <script type="text/javascript" src="../src/js/auth.js"></script>
     </head>
     <body>
         <div class="signup-form">
-            <form id="signinForm" method="get" onsubmit="signinSubmit(event)">
-                <h2>Sign In</h2>
-                <p>Please fill in this form to sign in to your account!</p>
-                <hr>
-                <div class="form-group">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="required">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="required">
-                </div>
-                <div class="form-group">
-                    <input type="submit" name="btnsignin" class="btn btn-primary btn-lg" value="Sign In" />
-                </div>
+            <form method="post" action="login.php">
+                <label for="username">Username:</label>
+                <br>
+                <input type="text" id="username" name="username">
+                <br>
+                <label for="password">Password:</label>
+                <br>
+                <input type="password" id="password" name="password">
+                <br>
+                <br>
+                <input type="submit" value="Submit">
             </form>
-            <div class="hint-text">Don't have an account? <a href="signup.php">Sign up here</a>
-            </div>
         </div>
     </body>
 </html>
+
+<?php
+// Connect to the database
+$con = mysqli_connect('localhost', 'root', '', 'realestatedb.sql');
+
+// Check if the form has been submitted
+if (isset($_POST['username']) && isset($_POST['password'])) {
+  // Escape the submitted username and password to prevent SQL injection attacks
+  $username = $db->real_escape_string($_POST['username']);
+  $password = $db->real_escape_string($_POST['password']);
+
+  // Query the database to see if the username and password are correct
+  $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+  $result = $db->query($query);
+
+  if ($result->num_rows > 0) {
+    // Start a session and set a session variable to indicate that the user is logged in
+    session_start();
+    $_SESSION['logged_in'] = true;
+
+    // Redirect the user to the home page
+    header('Location: index.php');
+    exit;
+  } else {
+    // Display an error message
+    echo 'Invalid username or password';
+  }
+}
+?>
