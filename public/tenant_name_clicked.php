@@ -69,7 +69,7 @@ while($row=mysqli_fetch_assoc($result))
                 </tr>
             </table>
         </div>
-        <div id="status_box">
+        <!--<div id="status_box">
             <h1>Status</h1>
             <table class="table_status">
                 <tr>
@@ -81,7 +81,7 @@ while($row=mysqli_fetch_assoc($result))
                     <td>5</td>
                 </tr>
             </table>
-        </div>
+        </div>-->
         <div id="payment_box">
             <h1>Payments</h1>
             <table class="table table-dark table-striped">
@@ -93,7 +93,12 @@ while($row=mysqli_fetch_assoc($result))
                         <th></th>
                     </tr>
                 </thead>
+                <?php
+                    if(mysqli_num_rows($result) > 0) {
+                        while($row = mysqli_fetch_assoc($result)) {
+                ?>
                 <tbody>
+                <!--
                     <tr>
                         <td>5500</td>
                         <td>online payment</td>
@@ -101,72 +106,23 @@ while($row=mysqli_fetch_assoc($result))
                         <td>
                             <button type="button" class="btn btn-danger">Delete</button>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>2000</td>
-                        <td>cash</td>
-                        <td>07/02/2022</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4000</td>
-                        <td>check</td>
-                        <td>05/01/2022</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2000</td>
-                        <td>cash</td>
-                        <td>07/02/2022</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4000</td>
-                        <td>check</td>
-                        <td>05/01/2022</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2000</td>
-                        <td>cash</td>
-                        <td>07/02/2022</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4000</td>
-                        <td>check</td>
-                        <td>05/01/2022</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2000</td>
-                        <td>cash</td>
-                        <td>07/02/2022</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4000</td>
-                        <td>check</td>
-                        <td>05/01/2022</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
+                    </tr>-->
+                <tr>
+                    <td><?php echo $row['amount'] ?></td>
+                    <td><?php echo $row['payment_method'] ?></td>
+                    <td><?php echo $row['date_paid'] ?></td>
+                </tr>
                 </tbody>
+                <?php
+                }
+            } else {
+                echo "0 results";
+            }
+                
+            mysqli_close($con);
+        ?>
+
+        </table>
             </table>
         </div>
         <div id="complaintLog_box">
