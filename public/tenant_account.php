@@ -13,7 +13,7 @@ session_start();
         <link rel="stylesheet" href="../src/css/styles.css" />
         <!-- JavaScript -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <title>Document</title>
+        <title>My Account | NAC Management</title>
     </head>
     <body class="tenant_account_body" onload="ready()">
         <div class="dropdown position-absolute top-0 end-0 m-1">
