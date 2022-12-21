@@ -10,18 +10,15 @@ if(isset($_GET['Del']))
     if($result)
     {
         header("location:complaints_log.php");
-        echo "<script type='text/javascript'>alert('Should work');</script>";
     }
     else
     {
         echo 'Please check your query.';
-        echo "<script type='text/javascript'>alert('Something wrong');</script>";
     }
 }
 else
 {
     header("location:complaints_log.php");
-    echo "<script type='text/javascript'>alert('Didn't get DEL');</script>";
 }
 
 ?>
