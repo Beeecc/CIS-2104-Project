@@ -95,8 +95,9 @@ while($row=mysqli_fetch_assoc($result))
                 </thead>
                 <?php
                     $payments = "SELECT p.amount, p.payment_method, p.date_paid FROM tenant_t t, payment_t p WHERE t.tenant_id = p.tenant_id && t.tenant_id='".$ID."';";
-                    if(mysqli_num_rows($payments) > 0) {
-                        while($paymentrow = mysqli_fetch_assoc($payments)) {
+                    $paymentResult = mysqli_query($con, $payments);
+                    if(mysqli_num_rows($paymentResult) > 0) {
+                        while($paymentrow = mysqli_fetch_assoc($paymentResult)) {
                 ?>
                 <tbody>
                 <!--
