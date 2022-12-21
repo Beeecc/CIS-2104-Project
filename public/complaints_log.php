@@ -81,10 +81,10 @@
                             ?>
 
                             <tbody>
-                                <tr><th scope="row"><td><?php echo $row['fname']?></th></td>
-                                <th scope="row"><td><?php echo $row['lname']?></th></td>
-                                <th scope="row"><td><?php echo $row['complaint']?></th></td>
-                                <th scope="row"><td><?php echo $row['date_received']?></th></td>
+                                <tr><td><?php echo $row['fname']?></td>
+                                <td><?php echo $row['lname']?></td>
+                                <td><?php echo $row['complaint']?></td>
+                                <td><?php echo $row['date_received']?></td>
                             </tbody>
                             <?php 
                                    }
