@@ -73,7 +73,7 @@
                                 $sql = "SELECT t.fname, t.lname, c.complaint, c.date_received
                                 FROM tenant t,
                                      complaint_t c
-                                WHERE c.tenant_id == t.tenant_id
+                                WHERE c.tenant_id = t.tenant_id
                                 ORDER BY c.date_received DESC;";
                                 $result = mysqli_query($con, $sql);
                                 if (mysqli_num_rows($result) > 0) {
