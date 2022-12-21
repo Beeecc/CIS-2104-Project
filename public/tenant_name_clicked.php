@@ -144,7 +144,6 @@ while($row=mysqli_fetch_assoc($result))
             <?php echo "<div class='card bg-dark'>";
                 echo"<div class='card-body '>";
                     echo "$listComplaint";
-                    echo "<button type='button' class='btn btn-success float-end'>Solved</button>";
                 echo "</div>";
                echo "</div>";
             ?>
