@@ -35,19 +35,20 @@ include "../src/php/db_connect.php"
                     // Escape the submitted username and password to prevent SQL injection attacks
                     $username = $con->real_escape_string($_POST['username']);
                     $password = $con->real_escape_string($_POST['password']);
+                    $value = 1;
                     // Query the database to see if the username and password are correct
                     $query = "SELECT * FROM user_t WHERE username = '$username' AND password = '$password';";
                     $result = mysqli_query($con, $query);
                     if (mysqli_num_rows($result ) > 0) {
                         // Start a session and set a session variable to indicate that the user is logged in
-                        
+
                         $temp = $con->query($query);
                         $result = $temp->fetch_assoc();
 
                         if ($result["role"] == 1){
                             header('Location: dashboard.php');
                         } elseif ($result["role"] == 2){
-                            header('Location: tenant_account.php');
+                            header('Location: tenant_account.php?GetID=1');
                         }
                         exit;
                       } else {
