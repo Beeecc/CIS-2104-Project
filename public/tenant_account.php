@@ -1,6 +1,20 @@
 <?php
 session_start();
+require '../src/php/db_connect.php' ;
+$ID = $_GET['GetID']; //gets ID from index.php
+$sql = "SELECT * FROM tenant_t t, payment_t p, complaint_t c WHERE t.tenant_id = p.tenant_id && t.tenant_id = c.tenant_id && t.tenant_id='".$ID."';"; // "sql code'" -> php code -> "sql code'"
+$result = mysqli_query($con, $sql);
+$row = mysqli_fetch_assoc($result);
+$firstName = $row['fname'];
+$lastName = $row['lname'];
+$sex = $row['sex'];
+$contact = $row['contact_no'];
+$address = $row['address'];
+$apartment = $row['apartment_no'];
+$end = $row['contract_end'];
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,8 +38,8 @@ session_start();
                 </li>
             </ul>
         </div>
-        <div id="payment_history_box">
-            <h2>Payment History</h2>
+        <div id="payment_box">
+            <h1>Payments</h1>
             <table class="table table-dark table-striped">
                 <thead>
                     <tr>
@@ -33,71 +47,62 @@ session_start();
                         <th>Mode of Payment</th>
                         <th>Date</th>
                     </tr>
-                </thead>
-                <tbody id="payments">
+                </thead> <?php
+                    $payments = "SELECT p.amount, p.payment_method, p.date_paid FROM tenant_t t, payment_t p WHERE t.tenant_id = p.tenant_id && t.tenant_id='".$ID."';";
+                    $paymentResult = mysqli_query($con, $payments);
+                    if(mysqli_num_rows($paymentResult) > 0) {
+                        while($paymentrow = mysqli_fetch_assoc($paymentResult)) {
+                ?> <tbody>
+                    <!--
+                    <tr><td>5500</td><td>online payment</td><td>12/05/2022</td><td><button type="button" class="btn btn-danger">Delete</button></td></tr>-->
                     <tr>
+                        <td> <?php echo $paymentrow['amount'] ?> </td>
+                        <td> <?php echo $paymentrow['payment_method'] ?> </td>
+                        <td> <?php echo $paymentrow['date_paid'] ?> </td>
+                    </tr>
+                </tbody> <?php
+                }
+            } else {
+                echo "0 results";
+            }
+        ?>
+        </table>
+        </div>
+        <!-- Complaints -->
+        <div id="payment_box">
+            <h1>Complaints</h1>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>Complaint</th>
+                    </tr>
+                </thead>
+                <?php
+                    $complaint = "SELECT c.complaint FROM tenant_t t, complaint_t c WHERE t.tenant_id = c.tenant_id && t.tenant_id='".$ID."';";
+                    $complaintResult = mysqli_query($con, $complaint);
+                    if(mysqli_num_rows($complaintResult) > 0) {
+                        while($complaintRow = mysqli_fetch_assoc($complaintResult)) {
+                ?>
+                <tbody>
+                <!--
+                    <tr>v
                         <td>5500</td>
                         <td>online payment</td>
                         <td>12/05/2022</td>
-                    </tr>
+                        <td>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>-->
+                <tr>
+                    <td><?php echo $complaintRow['complaint'] ?></td>
+                </tr>
                 </tbody>
-            </table>
-        </div>
-        <div id="complaint_box">
-            <h2>Complaints</h2>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control bg-secondary" aria-label="Username" aria-describedby="input-group-button-right">
-                <button type="button" class="btn btn-success" id="input-group-button-right">Add</button>
-            </div>
-            <div class="card bg-dark">
-                <div class="card-body">
-                    <p class="card-text text-light">I need a plumber ASAP xoxo</p>
-                    <button type="button" class="btn btn-danger float-end">Delete</button>
-                </div>
-            </div>
-            <div class="card bg-dark">
-                <div class="card-body">
-                    <p class="card-text text-light">Ceiling gone from odette</p>
-                    <button type="button" class="btn btn-danger float-end">Delete</button>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            var userID = < ? php echo $_SESSION["user_id"]; ? > ;
-            var xhttp = new XMLHttpRequest();
-
-            function showPayments(amount, MOP, date) {
-                $("#payments").append('\
-                 < tr > \ < td > '+ amount +' < /td>\ < td > '+ MOP +' < /td>\ < td > '+ date +' < /td>\ < /tr>\
-                    ');
+                <?php
                 }
-
-                function ready() {
-                    getPayments(true);
-                }
-
-                function getPayments(isActive = tabClicked === 0) {
-                    removeAllCards();
-                    var url = "../src/php/getPayments_action.php";
-                    var urlData = url + "?user_id=" + userID;
-                    xhttp.open("GET", urlData, true);
-                    xhttp.send();
-                    xhttp.onreadystatechange = function() {
-                        if (this.readyState == 4 && this.status == 200) {
-                            var res = JSON.parse(this.responseText);
-                            if (res["status"] == 200) {
-                                for (var i = 0; i < res["count"]; i++) {
-                                    addCard(res["data"][i]["item_id"], res["data"][i]["item_name"], res["data"][i]["item_description"]);
-                                }
-                            }
-                        }
-                    };
-                }
-
-                function removeAllCards() {
-                    $("#activeCards").empty();
-                    console.log("Test");
-                }
-        </script>
+            } else {
+                echo "0 results";
+            }
+        ?>
+        </table>
     </body>
 </html>

@@ -1,7 +1,7 @@
 <?php 
 
 require '../src/php/db_connect.php' ;
-$ID = $_GET['GetID']; //gets ID from index.php
+$ID = $_GET['GetID']; //gets ID from dashboard.php
 $sql = "SELECT * FROM tenant_t t, payment_t p, complaint_t c WHERE t.tenant_id = p.tenant_id && t.tenant_id = c.tenant_id && t.tenant_id='".$ID."';"; // "sql code'" -> php code -> "sql code'"
 $result = mysqli_query($con, $sql);
 $row = mysqli_fetch_assoc($result);
