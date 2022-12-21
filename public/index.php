@@ -1,6 +1,6 @@
 <?php
 // Connect to the database
-include("db_connect.php");
+include "../src/php/db_connect.php"
 // Check if the form has been submitted
 if (isset($_POST['username']) && isset($_POST['password'])) {
   // Escape the submitted username and password to prevent SQL injection attacks
