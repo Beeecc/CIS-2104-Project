@@ -42,7 +42,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     </head>
     <body>
         <div class="signup-form">
-            <form method="post" action="login.php">
+            <form method="post" action="index.php">
                 <label for="username">Username:</label>
                 <br>
                 <input type="text" id="username" name="username">
