@@ -1,3 +1,6 @@
+<?php 
+    include "src/php/db_connect.php"
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -39,13 +42,13 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col">Tenant Name</th>
+                                    <th scope="col">Tenant First Name</th>
+                                    <th scope="col">Tenant Last Name</th>
                                     <th scope="col">Subject Matter</th>
                                     <th scope="col">Date</th>
-                                    <th scope="col">Complaint Status</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <!--<tbody>
                                 <tr>
                                     <th scope="row">1</th>
                                     <td>Mark</td>
@@ -63,7 +66,33 @@
                                     <td colspan="2">Larry the Bird</td>
                                     <td>@twitter</td>
                                 </tr>
+                            </tbody> -->
+                            <?php
+
+                                // display data from database in tables
+                                $sql = "SELECT t.fname, t.lname, c.complaint, c.date_received
+                                FROM tenant t,
+                                     complaint_t c
+                                WHERE c.tenant_id == t.tenant_id
+                                ORDER BY c.date_received DESC;";
+                                $result = mysqli_query($conn, $sql);
+                                if (mysqli_num_rows($result) > 0) {
+                                   while($row = mysqli_fetch_assoc($result)) {
+                            ?>
+
+                            <tbody>
+                                <tr><td><?php echo $row['t.fname']?></td>
+                                <tr><td><?php echo $row['t.lname']?></td>
+                                <tr><td><?php echo $row['c.complaint']?></td>
+                                <tr><td><?php echo $row['c.date_received']?></td>
                             </tbody>
+                            <?php 
+                                   }
+                                } else {
+                                    echo "0 results";
+                                }
+                                mysqli_close($conn);
+                            ?>
                         </table>
                     </div>
                 </div>
