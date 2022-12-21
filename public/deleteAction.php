@@ -7,6 +7,7 @@ if(isset($_GET['Del']))
     $ID = $_GET['Del'];
     $sql = "DELETE FROM complaint_t WHERE tenant_id = '".$ID."';";
     $result = mysqli_query($con, $sql);
+    echo "<script type='text/javascript'>alert($result);</script>";
     if($result)
     {
         header("location:complaints_log.php");
