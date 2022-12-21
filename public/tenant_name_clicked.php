@@ -120,8 +120,6 @@ while($row=mysqli_fetch_assoc($result))
             } else {
                 echo "0 results";
             }
-                
-            mysqli_close($con);
         ?>
         </table>
 
@@ -156,7 +154,6 @@ while($row=mysqli_fetch_assoc($result))
             } else {
                 echo "0 results";
             }
-                
             mysqli_close($con);
         ?>
         </div>
