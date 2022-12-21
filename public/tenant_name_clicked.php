@@ -17,9 +17,6 @@ while($row=mysqli_fetch_assoc($result))
 }
 
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -44,43 +41,31 @@ while($row=mysqli_fetch_assoc($result))
             <table class="table_tenant">
                 <tr>
                     <th>Full name:</th>
-                    <td><?php echo "$firstName $lastName" ?></td>
+                    <td> <?php echo "$firstName $lastName" ?> </td>
                 </tr>
                 <tr>
                     <th>Sex:</th>
-                    <td><?php echo "$sex" ?></td>
+                    <td> <?php echo "$sex" ?> </td>
                 </tr>
                 <tr>
                     <th>Contact:</th>
-                    <td><?php echo "$contact" ?></td>
+                    <td> <?php echo "$contact" ?> </td>
                 </tr>
                 <tr>
                     <th>Address:</th>
-                    <td><?php echo "$address" ?></td>
+                    <td> <?php echo "$address" ?> </td>
                 </tr>
                 <tr>
                     <th>Apartment:</th>
-                    <td><?php echo "$apartment" ?></td>
+                    <td> <?php echo "$apartment" ?> </td>
                 </tr>
                 <tr>
                     <th>Contract End:</th>
-                    <td><?php echo "$end" ?></td>
+                    <td> <?php echo "$end" ?> </td>
                 </tr>
             </table>
         </div>
-        <!--<div id="status_box">
-            <h1>Status</h1>
-            <table class="table_status">
-                <tr>
-                    <th>Remaining Balance:</th>
-                    <td>5266.00</td>
-                </tr>
-                <tr>
-                    <th>Unresolved Complaints:</th>
-                    <td>5</td>
-                </tr>
-            </table>
-        </div>-->
+        <!--<div id="status_box"><h1>Status</h1><table class="table_status"><tr><th>Remaining Balance:</th><td>5266.00</td></tr><tr><th>Unresolved Complaints:</th><td>5</td></tr></table></div>-->
         <div id="payment_box">
             <h1>Payments</h1>
             <table class="table table-dark table-striped">
@@ -91,68 +76,52 @@ while($row=mysqli_fetch_assoc($result))
                         <th>Date</th>
                         <th></th>
                     </tr>
-                </thead>
-                <?php
+                </thead> <?php
                     $payments = "SELECT p.amount, p.payment_method, p.date_paid FROM tenant_t t, payment_t p WHERE t.tenant_id = p.tenant_id && t.tenant_id='".$ID."';";
                     $paymentResult = mysqli_query($con, $payments);
                     if(mysqli_num_rows($paymentResult) > 0) {
                         while($paymentrow = mysqli_fetch_assoc($paymentResult)) {
-                ?>
-                <tbody>
-                <!--
+                ?> <tbody>
+                    <!--
+                    <tr><td>5500</td><td>online payment</td><td>12/05/2022</td><td><button type="button" class="btn btn-danger">Delete</button></td></tr>-->
                     <tr>
-                        <td>5500</td>
-                        <td>online payment</td>
-                        <td>12/05/2022</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>-->
-                <tr>
-                    <td><?php echo $paymentrow['amount'] ?></td>
-                    <td><?php echo $paymentrow['payment_method'] ?></td>
-                    <td><?php echo $paymentrow['date_paid'] ?></td>
-                </tr>
-                </tbody>
-                <?php
+                        <td> <?php echo $paymentrow['amount'] ?> </td>
+                        <td> <?php echo $paymentrow['payment_method'] ?> </td>
+                        <td> <?php echo $paymentrow['date_paid'] ?> </td>
+                    </tr>
+                </tbody> <?php
                 }
             } else {
                 echo "0 results";
             }
         ?>
-        </table>
-
-        <!-- Complaint Box -->
+            </table>
+            <!-- Complaint Box -->
         </div>
         <div id="complaintLog_box">
             <h1>Complaints</h1>
             <!--
-                  <div class="card bg-dark">
-                <div class="card-body ">
-                    <p class="card-text text-light">I need a plumber ASAP xoxo</p>
-                    <button type="button" class="btn btn-success float-end">Solved</button>
-                </div>
-            </div> -->
-            <!--
-            <?php/*
+                  <div class="card bg-dark"><div class="card-body "><p class="card-text text-light">I need a plumber ASAP xoxo</p><button type="button" class="btn btn-success float-end">Solved</button></div></div> --> <?php
                 $complaint = "SELECT c.complaint FROM tenant_t t, complaint_t c WHERE t.tenant_id = c.tenant_id && t.tenant_id='".$ID."';";
                 $complaintResult = mysqli_query($con, $complaint);
                 if(mysqli_num_rows($complaintResult) > 0) {
                     while($complaintRow = mysqli_fetch_assoc($complaintResult)) {
-            ?>
-            <?php echo "<div class='card bg-dark'>";
-                echo"<div class='card-body '>";
+            ?> <?php echo "
+							<div class='card bg-dark'>";
+                echo"
+								<div class='card-body '>";
                     echo $complaintRow['complaint'];
                 echo "</div>";
-               echo "</div>";
-            */?>
-        </div>
-        <?php/*
+               echo "
+							</div>";
+            ?>
+        </div> <?php
                 }
             } else {
                 echo "0 results";
             }
             mysqli_close($con);
+<<<<<<< HEAD
         */?> -->
 
         <div id="payment_box">
@@ -191,5 +160,8 @@ while($row=mysqli_fetch_assoc($result))
         ?>
         </table>
         </div>
+=======
+        ?> </div>
+>>>>>>> c184b91b29782122614c39882270dcd519fb084f
     </body>
 </html>
