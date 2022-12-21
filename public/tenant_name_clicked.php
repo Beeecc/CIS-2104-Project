@@ -7,6 +7,11 @@ $result = mysqli_query($con, $sql);
 $row = mysqli_fetch_assoc($result);
 $firstName = $row['fname'];
 $lastName = $row['lname'];
+$sex = $row['sex'];
+$contact = $row['contact_no'];
+$address = $row['address'];
+$apartment = $row['apartment_no'];
+$end = $row['contract_end'];
 while($row=mysqli_fetch_assoc($result))
 {
 }
@@ -39,27 +44,27 @@ while($row=mysqli_fetch_assoc($result))
             <table class="table_tenant">
                 <tr>
                     <th>Full name:</th>
-                    <td><?php echo "Full name: $firstName $lastName" ?></td>
+                    <td><?php echo "$firstName $lastName" ?></td>
                 </tr>
                 <tr>
                     <th>Sex:</th>
-                    <td>First</td>
+                    <td><?php echo "$sex" ?></td>
                 </tr>
                 <tr>
                     <th>Contact:</th>
-                    <td>First</td>
+                    <td><?php echo "$contact" ?></td>
                 </tr>
                 <tr>
                     <th>Address:</th>
-                    <td>First</td>
+                    <td><?php echo "$address" ?></td>
                 </tr>
                 <tr>
                     <th>Apartment:</th>
-                    <td>First</td>
+                    <td><?php echo "$apartment" ?></td>
                 </tr>
                 <tr>
-                    <th>Contract Start & End:</th>
-                    <td>First</td>
+                    <th>Contract End:</th>
+                    <td><?php echo "$end" ?></td>
                 </tr>
             </table>
         </div>
