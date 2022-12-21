@@ -83,7 +83,7 @@
                                 <td><?php echo $row['lname']?></td>
                                 <td><?php echo $row['complaint']?></td>
                                 <td><?php echo $row['date_received']?></td>
-                                <td><a class="delete" href="deleteAction.php?Del=<?php echo $row['tenant_ID'] ?>">Delete</a></td>
+                                <td><a class="delete" href="deleteAction.php?Del=<?php echo $row['tenant_id'] ?>">Delete</a></td>
                             </tbody>
                             <?php 
                                    }
