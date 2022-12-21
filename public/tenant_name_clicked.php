@@ -155,7 +155,7 @@ while($row=mysqli_fetch_assoc($result))
             mysqli_close($con);
         */?> -->
 
-        <div id="complaintLog_box">
+        <div id="payment_box">
             <h1>Complaints</h1>
             <table class="table table-dark table-striped">
                 <thead>
