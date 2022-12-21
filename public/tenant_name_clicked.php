@@ -94,8 +94,9 @@ while($row=mysqli_fetch_assoc($result))
                     </tr>
                 </thead>
                 <?php
-                    if(mysqli_num_rows($result) > 0) {
-                        while($row = mysqli_fetch_assoc($result)) {
+                    $payments = "SELECT * FROM tenant_t t, payment_t p WHERE t.tenant_id = c.tenant_id && t.tenant_id='".$ID."';";
+                    if(mysqli_num_rows($payments) > 0) {
+                        while($paymentrow = mysqli_fetch_assoc($payments)) {
                 ?>
                 <tbody>
                 <!--
@@ -108,9 +109,9 @@ while($row=mysqli_fetch_assoc($result))
                         </td>
                     </tr>-->
                 <tr>
-                    <td><?php echo $row['amount'] ?></td>
-                    <td><?php echo $row['payment_method'] ?></td>
-                    <td><?php echo $row['date_paid'] ?></td>
+                    <td><?php echo $paymentrow['amount'] ?></td>
+                    <td><?php echo $paymentrow['payment_method'] ?></td>
+                    <td><?php echo $paymentrow['date_paid'] ?></td>
                 </tr>
                 </tbody>
                 <?php
@@ -121,9 +122,9 @@ while($row=mysqli_fetch_assoc($result))
                 
             mysqli_close($con);
         ?>
-
         </table>
-            </table>
+
+        <!-- Complaint Box -->
         </div>
         <div id="complaintLog_box">
             <h1>Complaints</h1>
