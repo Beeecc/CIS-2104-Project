@@ -1,3 +1,20 @@
+<?php 
+
+require_once("../public/php/db_connect.php");
+$ID = $_GET['GetID']; //gets ID from index.php
+$sql = "SELECT * FROM tenant_t t, payment_t p, complaints_t c WHERE t.tenant_id = p.tenant_id && t.tenant_id = c.tenant_id && t.tenant_id='".$ID."';"; // "sql code'" -> php code -> "sql code'"
+$result = mysqli_query($con, $sql);
+$row = mysqli_fetch_assoc($result);
+$firstName = $row['fname'];
+$lastName = $row['lname'];
+while($row=mysqli_fetch_assoc($result))
+{
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -22,7 +39,7 @@
             <table class="table_tenant">
                 <tr>
                     <th>Full name:</th>
-                    <td>First</td>
+                    <td><?php echo "Full name: $firstName $lastName" ?></td>
                 </tr>
                 <tr>
                     <th>Sex:</th>

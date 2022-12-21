@@ -108,6 +108,7 @@
                             <table class="table bg-white rounded shadow-sm  table-hover">
                                 <thead>
                                     <tr>
+                                        <th scope="col">ID</th>
                                         <th scope="col">First Name</th>
                                         <th scope="col">Last Name</th>
                                         <th scope="col">Amount</th>
@@ -116,7 +117,7 @@
                                 </thead>
                                 <?php
                                     // display data from database in tables
-                                    $sql = "SELECT t.fname, t.lname, p.amount, p.date_paid
+                                    $sql = "SELECT t.tenant_id, t.fname, t.lname, p.amount, p.date_paid
                                     FROM tenant_t t,
                                          payment_t p
                                     WHERE t.tenant_id = p.tenant_id
@@ -127,7 +128,9 @@
                                     ?>
 
                                     <tbody>
-                                    <tr><td><?php echo $row['fname']?></td>
+                                    <tr>
+                                    <td><a href = "tenant_name_clicked.php?GetID=<?php echo $row['tenant_id'] ?>"<?php echo $row['tenant_id']?></a></td>
+                                    <td><?php echo $row['fname']?></td>
                                     <td><?php echo $row['lname']?></td>
                                     <td><?php echo $row['amount']?></td>
                                     <td><?php echo $row['date_paid']?></td>
