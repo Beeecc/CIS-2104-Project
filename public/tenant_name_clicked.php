@@ -140,10 +140,11 @@ while($row=mysqli_fetch_assoc($result))
                 $complaintResult = mysqli_query($con, $complaint);
                 if(mysqli_num_rows($complaintResult) > 0) {
                     while($paymentrow = mysqli_fetch_assoc($complaintResult)) {
+                        $listComplaint = $complainResult['complaint'];
             ?>
             <?php echo "<div class='card bg-dark'>";
                 echo"<div class='card-body '>";
-                    echo $complaintResult['complaint'];
+                    echo "$listComplaint";
                     echo "<button type='button' class='btn btn-success float-end'>Solved</button>";
                 echo "</div>";
                echo "</div>";
