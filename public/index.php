@@ -32,17 +32,16 @@
 
 <?php
 // Connect to the database
-$con = mysqli_connect('localhost', 'root', '', 'realestatedb.sql');
-
+$con = new mysqli_connect('localhost', 'root', '', 'realestatedb');
 // Check if the form has been submitted
 if (isset($_POST['username']) && isset($_POST['password'])) {
   // Escape the submitted username and password to prevent SQL injection attacks
-  $username = $db->real_escape_string($_POST['username']);
-  $password = $db->real_escape_string($_POST['password']);
+  $username = $con->real_escape_string($_POST['username']);
+  $password = $con->real_escape_string($_POST['password']);
 
   // Query the database to see if the username and password are correct
   $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-  $result = $db->query($query);
+  $result = $con->query($query);
 
   if ($result->num_rows > 0) {
     // Start a session and set a session variable to indicate that the user is logged in

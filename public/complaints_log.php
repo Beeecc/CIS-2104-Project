@@ -17,17 +17,14 @@
     <body>
         <nav class="navbar navbar-expand- bg-dark navbar-dark py-3">
             <div class="container">
-                <a href="index.php" class="navbar-brand">NAC Management</a>
+                <a href="dashboard.php" class="navbar-brand">NAC Management</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navmenu">
                     <ul class="navbar-nav ms-auto">
                         <li>
-                            <a href="#index.php" class="nav-link">Profile</a>
-                        </li>
-                        <li>
-                            <a href="#signOutPage" class="nav-link">Sign Out</a>
+                            <a href="index.php" class="nav-link">Sign Out</a>
                         </li>
                     </ul>
                 </div>

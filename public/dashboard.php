@@ -49,7 +49,7 @@
                                         <a class="dropdown-item" href="#">Settings</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="sign_in.php">Logout</a>
+                                        <a class="dropdown-item" href="index.php">Logout</a>
                                     </li>
                                 </ul>
                             </li>
