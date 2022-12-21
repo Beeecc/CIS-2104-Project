@@ -75,7 +75,7 @@
                                      complaint_t c
                                 WHERE c.tenant_id == t.tenant_id
                                 ORDER BY c.date_received DESC;";
-                                $result = mysqli_query($conn, $sql);
+                                $result = mysqli_query($con, $sql);
                                 if (mysqli_num_rows($result) > 0) {
                                    while($row = mysqli_fetch_assoc($result)) {
                             ?>
@@ -91,7 +91,7 @@
                                 } else {
                                     echo "0 results";
                                 }
-                                mysqli_close($conn);
+                                mysqli_close($con);
                             ?>
                         </table>
                     </div>
