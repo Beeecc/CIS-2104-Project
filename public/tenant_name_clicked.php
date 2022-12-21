@@ -74,7 +74,6 @@ while($row=mysqli_fetch_assoc($result))
                         <th>Amount</th>
                         <th>Mode of Payment</th>
                         <th>Date</th>
-                        <th></th>
                     </tr>
                 </thead> <?php
                     $payments = "SELECT p.amount, p.payment_method, p.date_paid FROM tenant_t t, payment_t p WHERE t.tenant_id = p.tenant_id && t.tenant_id='".$ID."';";
