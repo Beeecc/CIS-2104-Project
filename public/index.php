@@ -38,7 +38,7 @@ include "../src/php/db_connect.php"
 
                     // Query the database to see if the username and password are correct
                     $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-                    $result = $con->query($query);
+                    $result = mysqli_query($con, $query);
 
                     if (mysqli_num_rows($result > 0)) {
                       // Start a session and set a session variable to indicate that the user is logged in
