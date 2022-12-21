@@ -71,7 +71,7 @@
 
                                 // display data from database in tables
                                 $sql = "SELECT t.fname, t.lname, c.complaint, c.date_received
-                                FROM tenant t,
+                                FROM tenant_t t,
                                      complaint_t c
                                 WHERE c.tenant_id = t.tenant_id
                                 ORDER BY c.date_received DESC;";
