@@ -120,7 +120,7 @@
                                     FROM tenant_t t,
                                          payment_t p
                                     WHERE t.tenant_id = p.tenant_id
-                                    ORDER BY c.date_received DESC;";
+                                    ORDER BY p.date_paid DESC;";
                                     $result = mysqli_query($con, $sql);
                                     if (mysqli_num_rows($result) > 0) {
                                     while($row = mysqli_fetch_assoc($result)) {
