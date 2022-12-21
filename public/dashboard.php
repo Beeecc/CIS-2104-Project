@@ -48,7 +48,7 @@
                                     <li>
                                         <a class="dropdown-item" href="#">Settings</a>
                                     </li>
-                                    <li>
+                                     <li>
                                         <a class="dropdown-item" href="index.php">Logout</a>
                                     </li>
                                 </ul>
