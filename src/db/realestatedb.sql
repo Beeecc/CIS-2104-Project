@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2022 at 06:19 AM
+-- Generation Time: Dec 21, 2022 at 07:16 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -111,16 +111,17 @@ CREATE TABLE `payment_t` (
   `payment_id` int(11) NOT NULL,
   `amount` decimal(10,2) NOT NULL,
   `payment_method` enum('online payment','check','cash') NOT NULL,
-  `date_paid` date NOT NULL
+  `date_paid` date NOT NULL,
+  `tenant_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `payment_t`
 --
 
-INSERT INTO `payment_t` (`payment_id`, `amount`, `payment_method`, `date_paid`) VALUES
-(1, '500.69', 'online payment', '2022-12-21'),
-(2, '1000.00', 'cash', '2022-12-21');
+INSERT INTO `payment_t` (`payment_id`, `amount`, `payment_method`, `date_paid`, `tenant_id`) VALUES
+(1, '500.69', 'online payment', '2022-12-21', 1),
+(2, '1000.00', 'cash', '2022-12-21', 1);
 
 -- --------------------------------------------------------
 
@@ -170,6 +171,7 @@ INSERT INTO `tenant_t` (`tenant_id`, `fname`, `lname`, `sex`, `contact_no`, `add
 --
 
 CREATE TABLE `user_t` (
+  `role` int(1) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -178,8 +180,8 @@ CREATE TABLE `user_t` (
 -- Dumping data for table `user_t`
 --
 
-INSERT INTO `user_t` (`username`, `password`) VALUES
-('vicedgar', '123456');
+INSERT INTO `user_t` (`role`, `username`, `password`) VALUES
+(0, 'vicedgar', '123456');
 
 --
 -- Indexes for dumped tables
@@ -216,7 +218,8 @@ ALTER TABLE `manager_t`
 -- Indexes for table `payment_t`
 --
 ALTER TABLE `payment_t`
-  ADD PRIMARY KEY (`payment_id`);
+  ADD PRIMARY KEY (`payment_id`),
+  ADD KEY `tenant_id` (`tenant_id`);
 
 --
 -- Indexes for table `repairman_t`
@@ -231,6 +234,12 @@ ALTER TABLE `repairman_t`
 ALTER TABLE `tenant_t`
   ADD PRIMARY KEY (`tenant_id`),
   ADD KEY `apartment_no` (`apartment_no`);
+
+--
+-- Indexes for table `user_t`
+--
+ALTER TABLE `user_t`
+  ADD PRIMARY KEY (`role`);
 
 --
 -- AUTO_INCREMENT for dumped tables
