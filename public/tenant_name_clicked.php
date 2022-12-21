@@ -129,42 +129,36 @@ while($row=mysqli_fetch_assoc($result))
         </div>
         <div id="complaintLog_box">
             <h1>Complaints</h1>
-            <div class="card bg-dark">
+            <!--
+                  <div class="card bg-dark">
                 <div class="card-body ">
                     <p class="card-text text-light">I need a plumber ASAP xoxo</p>
                     <button type="button" class="btn btn-success float-end">Solved</button>
                 </div>
-            </div>
-            <div class="card bg-dark">
-                <div class="card-body">
-                    <p class="card-text text-light">Ceiling gone from odette</p>
-                    <button type="button" class="btn btn-success float-end">Solved</button>
-                </div>
-            </div>
-            <div class="card bg-dark">
-                <div class="card-body ">
-                    <p class="card-text text-light">I need a plumber ASAP xoxo</p>
-                    <button type="button" class="btn btn-success float-end">Solved</button>
-                </div>
-            </div>
-            <div class="card bg-dark">
-                <div class="card-body">
-                    <p class="card-text text-light">Ceiling gone from odette</p>
-                    <button type="button" class="btn btn-success float-end">Solved</button>
-                </div>
-            </div>
-            <div class="card bg-dark">
-                <div class="card-body ">
-                    <p class="card-text text-light">I need a plumber ASAP xoxo</p>
-                    <button type="button" class="btn btn-success float-end">Solved</button>
-                </div>
-            </div>
-            <div class="card bg-dark">
-                <div class="card-body">
-                    <p class="card-text text-light">Ceiling gone from odette</p>
-                    <button type="button" class="btn btn-success float-end">Solved</button>
-                </div>
-            </div>
+            </div> -->
+            
+            <?php
+                $complaint = "SELECT c.complaint FROM tenant_t t, complaint_t c WHERE t.tenant_id = c.tenant_id && t.tenant_id='".$ID."';";
+                $complaintResult = mysqli_query($con, $complaint);
+                if(mysqli_num_rows($complaintResult) > 0) {
+                    while($paymentrow = mysqli_fetch_assoc($complaintResult)) {
+            ?>
+            <?php echo "<div class='card bg-dark'>";
+                echo"<div class='card-body '>";
+                    echo $complaintResult['complaint'];
+                    echo "<button type='button' class='btn btn-success float-end'>Solved</button>";
+                echo "</div>";
+               echo "</div>";
+            ?>
+        </div>
+        <?php
+                }
+            } else {
+                echo "0 results";
+            }
+                
+            mysqli_close($conn);
+        ?>
         </div>
     </body>
 </html>
