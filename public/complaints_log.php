@@ -43,6 +43,7 @@
                                     <th scope="col">Tenant Last Name</th>
                                     <th scope="col">Subject Matter</th>
                                     <th scope="col">Date</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <!--<tbody>
@@ -82,6 +83,7 @@
                                 <td><?php echo $row['lname']?></td>
                                 <td><?php echo $row['complaint']?></td>
                                 <td><?php echo $row['date_received']?></td>
+                                <td><button type="button" class="btn btn-danger">Delete</button></td>
                             </tbody>
                             <?php 
                                    }
